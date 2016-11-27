@@ -1,0 +1,53 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: royalblue;
+    float: right;
+    width: 100%;
+}
+
+li {
+    float: left;
+    padding: 0;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 3px 20px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: cornflowerblue;
+}
+
+.logo {
+    height: 20%;
+    width: 20%;
+}
+
+.rightNav {
+    float: right;
+}
+
+.usersTab {
+    float: right;
+}
+
+.check {
+    width: 50%;
+}
+
+td {
+    text-align: center;
+    padding: 5%;
+}
+
+.bordered {
+    border: double;
+}
