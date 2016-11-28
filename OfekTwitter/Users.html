@@ -10,10 +10,10 @@
 <header>
     <section>
         <article>
-            <span id="banner">
+            <ul><span id="banner">
                 <img id="ofek-img" src="../images/ofek_logo.png">
                 <a href="Tweets.html" id="mainPage">OfekTwitter</a>
-            </span>
+            </span></ul>
         </article>
         <aside class="rightNav">
             <nav style="text-align: right">
@@ -28,65 +28,93 @@
 </header>
 
 <div class="content">
-    <span>Filter by </span>
-    <input type="text" placeholder="user name">
-    <button>ok</button>
-    <br><br><br>
-    <table>
-        <tr>
-            <td class="bordered">
-                <img src="../images/useravatar.png">
-                <br>
-                <button>follow</button>
-                <br><br>
-                <span>Marty McFly</span>
-            </td>
-            <td class="bordered">
-                <img src="../images/useravatar.png">
-                <br>
-                <button>follow</button>
-                <br><br>
-                <span>James Bond</span>
-            </td>
-            <td class="bordered">
-                <img src="../images/useravatar.png">
-                <br>
-                <button>unfollow</button>
-                <br><br>
-                <span>Janis Joplin</span>
-            </td>
-            <td class="bordered">
-                <img src="../images/useravatar.png">
-                <br>
-                <button>follow</button>
-                <br><br>
-                <span>Mark Twain</span>
-            </td>
-            <td class="bordered">
-                <img src="../images/useravatar.png">
-                <br>
-                <button>unfollow</button>
-                <br><br>
-                <span>Albert Einstein</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="bordered">
-                <img src="../images/useravatar.png">
-                <br>
-                <button>follow</button>
-                <br><br>
-                <span>Frodo</span>
-            </td>
-            <td class="bordered">
-                <img src="../images/useravatar.png">
-                <br>
-                <button>follow</button>
-                <br><br>
-                <span>Bill Gates</span>
-            </td>
-        </tr>
-    </table>
+    <div class="users">
+        <span>Filter by </span>
+        <input type="text" placeholder="user name">
+        <button>ok</button>
+        <br><br><br>
+        <table cellspacing="10">
+            <tr>
+                <td class="bordered">
+                    <img src="../images/useravatar.png">
+                    <br>
+                    <button>follow</button>
+                    <br><br>
+                    <span>Marty McFly</span>
+                </td>
+                <td class="bordered">
+                    <img src="../images/useravatar.png">
+                    <br>
+                    <button>follow</button>
+                    <br><br>
+                    <span>James Bond</span>
+                </td>
+                <td class="bordered">
+                    <img src="../images/useravatar.png">
+                    <br>
+                    <button>unfollow</button>
+                    <br><br>
+                    <span>Janis Joplin</span>
+                </td>
+                <td class="bordered">
+                    <img src="../images/useravatar.png">
+                    <br>
+                    <button>follow</button>
+                    <br><br>
+                    <span>Mark Twain</span>
+                </td>
+                <td class="bordered">
+                    <img src="../images/useravatar.png">
+                    <br>
+                    <button>unfollow</button>
+                    <br><br>
+                    <span>Albert Einstein</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="bordered">
+                    <img src="../images/useravatar.png">
+                    <br>
+                    <button>follow</button>
+                    <br><br>
+                    <span>Frodo</span>
+                </td>
+                <td class="bordered">
+                    <img src="../images/useravatar.png">
+                    <br>
+                    <button>follow</button>
+                    <br><br>
+                    <span>Bill Gates</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="followees bordered">
+        <center><h3>Followees</h3></center>
+        <table style="margin: auto" cellspacing="10">
+            <tr>
+                <td class="bordered">
+                    <br>
+                    <img src="../images/useravatar.png">
+                    <br>
+                    <button>unfollow</button>
+                    <br><br>
+                    <span>Albert Einstein</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="bordered">
+                    <br>
+                    <img src="../images/useravatar.png">
+                    <br>
+                    <button>unfollow</button>
+                    <br><br>
+                    <span>Janis Joplin</span>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 </body>
 </html>

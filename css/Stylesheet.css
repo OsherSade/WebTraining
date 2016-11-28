@@ -13,7 +13,7 @@ li a {
     text-align: center;
     padding: 3px 20px;
     text-decoration: none;
-    margin-top: 7%;
+    margin-top: 15%;
 }
 
 li a:hover {
@@ -40,46 +40,41 @@ li a:hover {
 
 td {
     text-align: center;
-    padding: 5%;
+    padding: 3%;
+    margin: auto;
 }
 
 .bordered {
     border: 2px solid silver;
-    border-radius: 25px;
 }
 
 .content {
-    padding: 5%;
-    padding-left: 20%;
+    padding: 3%;
+    padding-left: 10%;
 }
 
 header {
     background-color: blue;
     color: azure;
-
 }
 
 #ofek-img {
     width: 10%;
-    margin-bottom: auto;
-    padding-right: 10px;
-    margin-top: 5px;
+    margin-bottom: 5%;
+    padding-right: 5%;
+    margin-top: 5%;
+    vertical-align: middle;
 }
 
 .header-li2 {
-    /* float: left;
-     padding-right: 5px;*/
     float: left;
 
 }
 
 .header-li {
-    /* float: right;*/
-    /*padding-right: 5px;*/
     margin-left: auto;
     padding-right: 5px;
     display: inline-block;
-    text-align: right
 }
 
 article {
@@ -99,7 +94,17 @@ aside {
     vertical-align: middle;
 }
 
-#message{
+#message {
     border-color: blue;
     vertical-align: middle;
+}
+
+.followees {
+    width: 15%;
+    display: inline-block;
+    margin-left: 30%;
+}
+
+.users {
+    display: inline-block;
 }
