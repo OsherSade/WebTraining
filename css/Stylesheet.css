@@ -11,9 +11,10 @@ li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 3px 20px;
+    padding: 10px 10px;
     text-decoration: none;
     margin-top: 15%;
+    font-size: small;
 }
 
 li a:hover {
@@ -34,33 +35,30 @@ li a:hover {
     float: right;
 }
 
-.check {
-    width: 50%;
-}
-
 td {
     text-align: center;
     padding: 3%;
     margin: auto;
+    width: 100px;
 }
 
 .bordered {
-    border: 2px solid silver;
+    border: 3px solid lightgrey;
 }
 
 .content {
-    padding: 3%;
     padding-left: 10%;
 }
 
 header {
-    background-color: blue;
+    background-color: #0a64eb;
     color: azure;
 }
 
 #ofek-img {
     width: 10%;
     margin-bottom: 5%;
+    margin-left: 3%;
     padding-right: 5%;
     margin-top: 5%;
     vertical-align: middle;
@@ -68,7 +66,6 @@ header {
 
 .header-li2 {
     float: left;
-
 }
 
 .header-li {
@@ -102,9 +99,28 @@ aside {
 .followees {
     width: 15%;
     display: inline-block;
-    margin-left: 30%;
+    margin-left: 20%;
+    margin-top: 2%;
 }
 
 .users {
+    display: inline-block;
+}
+
+.title {
+    text-align: center;
+}
+
+.tweet {
+    width: 50%;
+    text-align: left;
+}
+
+.tweet-avatar {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.tweet-content {
     display: inline-block;
 }
