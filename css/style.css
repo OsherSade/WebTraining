@@ -6,6 +6,10 @@
     color: white !important;
 }
 
+.white-font:hover {
+    color: lightsteelblue !important;
+}
+
 .move-down {
     margin-top: 3%;
 }
