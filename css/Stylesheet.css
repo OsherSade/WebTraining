@@ -44,6 +44,13 @@ td {
 
 .bordered {
     border: 3px solid lightgrey;
+    width: 20%;
+    text-align: center;
+    margin: auto;
+}
+
+.bordered:hover {
+    border: 3px solid silver;
 }
 
 .content {
@@ -83,7 +90,6 @@ article {
 aside {
     display: inline-block;
     vertical-align: middle;
-
 }
 
 #banner {
@@ -105,6 +111,7 @@ aside {
 
 .users {
     display: inline-block;
+    line-height: 250%;
 }
 
 .title {
@@ -123,4 +130,12 @@ aside {
 
 .tweet-content {
     display: inline-block;
+}
+
+.avatar {
+    margin-top: 10%;
+}
+
+.folowee-row {
+    width: 60%;
 }
