@@ -23,3 +23,7 @@
 .smaller {
     width: 60%;
 }
+
+.bordered {
+    border: solid 5px #e6e6e6;
+}
