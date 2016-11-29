@@ -2,107 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Users</title>
-    <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+    <title>Tweets</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap-theme.css">
 </head>
 <body>
-<header>
-    <section>
-        <article>
-            <img id="ofek-img" src="../images/ofek_logo.png">
-            <a href="Tweets.html" id="mainPageLink">OfekTwitter</a>
-        </article>
-        <aside class="rightNav">
-            <nav style="text-align: right">
-                <ul>
-                    <li class="header-li"><a href="Users.html">Users</a></li>
-                    <li class="header-li"><a>Sign up</a></li>
-                    <li class="header-li"><a>Sign in</a></li>
-                </ul>
-            </nav>
-        </aside>
-    </section>
-</header>
 
-<div class="content">
-    <div>
-        <form>
-            <br>
-            <textarea id="message" class="header-li" rows="4" cols="60" placeholder="tweet text"></textarea>
-            <button id="submit" class="header-li">publish</button>
-        </form>
+<nav class="navbar navbar-default">
+    <div class="container-fluid nav-blue">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a class="white-font" href="Tweets.html"><img class="ofek-logo" src="../images/ofek_logo.png">
+                    OfekTwitter</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="white-font" href="Users.html">Users</a></li>
+                <li><a class="white-font">Sign in</a></li>
+                <li><a class="white-font">Sign up</a></li>
+            </ul>
+        </div>
     </div>
-    <br>
+</nav>
 
-    <section class="tweets-section">
-        <div class="tweet-row">
-            <div class="tweet-avatar">
-                <img src="../images/useravatar.png">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-offset-1">
+            <div class="col-md-11">
+                <textarea class="form-control" placeholder="tweet text..."></textarea>
             </div>
-            <div class="tweet-content">
-                <div class="tweet-username">
-                    <b>James Bond says:</b>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-11">
+            <div class="col-md-2">
+                <button class="btn btn-primary btn-large pull-right">publish</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-offset-1">
+            <div class="col-md-10">
+                <div class="col-md-1">
+                    <img src="../images/useravatar.png">
                 </div>
-                <div class="tweet-text">
+                <div class="col-md-6">
+                    <b>James Bond says:</b>
+                    <br>
                     Blabla bla...
                 </div>
             </div>
-            <div class="tweet-row">
-                <div class="tweet-avatar">
+        </div>
+        <br>
+        <div class="col-md-offset-1 move-down">
+            <div class="col-md-10">
+                <div class="col-md-1">
                     <img src="../images/useravatar.png">
                 </div>
-                <div class="tweet-content">
-                    <div class="tweet-username">
-                        <b>James Bond says:</b>
-                    </div>
-                    <div class="tweet-text">
-                        Bond, James Bond
-                    </div>
-                </div>
-                <div class="tweet-row">
-                    <div class="tweet-avatar">
-                        <img src="../images/useravatar.png">
-                    </div>
-                    <div class="tweet-content">
-                        <div class="tweet-username">
-                            <b>Albert Einstein says:</b>
-                        </div>
-                        <div class="tweet-text">
-                            E = mc^2
-                        </div>
-                    </div>
-                </div>
-                <div class="tweet-row">
-                    <div class="tweet-avatar">
-                        <img src="../images/useravatar.png">
-                    </div>
-                    <div class="tweet-content">
-                        <div class="tweet-username">
-                            <b>Bill Gates says:</b>
-                        </div>
-                        <div class="tweet-text">
-                            I think 64 bytes should be enough for everyone
-                        </div>
-                    </div>
-                </div>
-                <div class="tweet-row">
-                    <div class="tweet-avatar">
-                        <img src="../images/useravatar.png">
-                    </div>
-                    <div class="tweet-content">
-                        <div class="tweet-username">
-                            <b>Frodo says:</b>
-                        </div>
-                        <div class="tweet-text">
-                            My Precious
-                        </div>
-                    </div>
+                <div class="col-md-6">
+                    <b>James Bond says:</b>
+                    <br>
+                    Bond, James bond
                 </div>
             </div>
         </div>
-    </section>
+        <br>
+        <div class="col-md-offset-1 move-down">
+            <div class="col-md-10">
+                <div class="col-md-1">
+                    <img src="../images/useravatar.png">
+                </div>
+                <div class="col-md-6">
+                    <b>Albert Einstein says:</b>
+                    <br>
+                    E = mc^2
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="col-md-offset-1 move-down">
+            <div class="col-md-10">
+                <div class="col-md-1">
+                    <img src="../images/useravatar.png">
+                </div>
+                <div class="col-md-6">
+                    <b>Bill Gates says:</b>
+                    <br>
+                    I think 64 bytes should be enough for everyone
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="col-md-offset-1 move-down">
+            <div class="col-md-10">
+                <div class="col-md-1">
+                    <img src="../images/useravatar.png">
+                </div>
+                <div class="col-md-6">
+                    <b>Frodo says:</b>
+                    <br>
+                    My Precious
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

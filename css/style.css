@@ -1,87 +1,25 @@
-.bordered {
-    border: 3px solid lightgrey;
-    width: 20%;
+.nav-blue {
+    background-color: #0a64eb;
+}
+
+.white-font {
+    color: white !important;
+}
+
+.move-down {
+    margin-top: 3%;
+}
+
+.centered {
     text-align: center;
     margin: auto;
 }
 
-.bordered:hover {
-    border: 3px solid silver;
+.ofek-logo {
+    width: 10%;
+    height: 10%;
 }
 
-.content {
-    padding-left: 10%;
-}
-
-header {
-    background-color: #0a64eb;
-    color: azure;
-}
-
-.header-li2 {
-    float: left;
-}
-
-.header-li {
-    margin-left: auto;
-    padding-right: 5px;
-    display: inline-block;
-}
-
-article {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-aside {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-#banner {
-    font-size: larger;
-    vertical-align: middle;
-}
-
-#message {
-    border-color: blue;
-    vertical-align: middle;
-}
-
-.followees {
-    width: 15%;
-    display: inline-block;
-    margin-left: 20%;
-    margin-top: 2%;
-}
-
-.users {
-    display: inline-block;
-    line-height: 250%;
-}
-
-.title {
-    text-align: center;
-}
-
-.tweet {
-    width: 50%;
-    text-align: left;
-}
-
-.tweet-avatar {
-    display: inline-block;
-    vertical-align: top;
-}
-
-.tweet-content {
-    display: inline-block;
-}
-
-.avatar {
-    margin-top: 10%;
-}
-
-.folowee-row {
+.smaller {
     width: 60%;
 }
