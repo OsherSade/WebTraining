@@ -6,15 +6,16 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap-theme.css">
+    <script src="../js/Users.js"></script>
 </head>
-<body>
+<body onload="GetAllUsers();">
 
 <nav class="navbar navbar-default">
     <div class="container-fluid nav-blue">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a class="white-font" href="Tweets.html"><img class="ofek-logo" src="../images/ofek_logo.png">
-                    <b>OfekTwitter</b></a></li>
+                    OfekTwitter</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -40,106 +41,7 @@
 </div>
 <br>
 <div class="row">
-    <div class="col-md-offset-1">
-        <div class="col-md-9">
-            <div class="col-md-2">
-                <div class="thumbnail centered">
-                    <img src="../images/useravatar.png">
-                    <br>
-                    <button class="btn btn-primary">follow</button>
-                    <br><br>Marty McFly
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="thumbnail centered">
-                    <img src="../images/useravatar.png">
-                    <br>
-                    <button class="btn btn-primary">follow</button>
-                    <br><br>Janis Joplin
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="thumbnail centered">
-                    <img src="../images/useravatar.png">
-                    <br>
-                    <button class="btn btn-primary">follow</button>
-                    <br><br>Albert Einstein
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="thumbnail centered">
-                    <img src="../images/useravatar.png">
-                    <br>
-                    <button class="btn btn-primary">follow</button>
-                    <br><br>Genghis Khan
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="thumbnail centered">
-                    <img src="../images/useravatar.png">
-                    <br>
-                    <button class="btn btn-primary">unfollow</button>
-                    <br><br>Dracula
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="thumbnail centered">
-                    <img src="../images/useravatar.png">
-                    <br>
-                    <button class="btn btn-primary">follow</button>
-                    <br><br>Forest Gump
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="thumbnail centered">
-                    <img src="../images/useravatar.png">
-                    <br>
-                    <button class="btn btn-primary">follow</button>
-                    <br><br>Caligula
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="thumbnail centered">
-                    <img src="../images/useravatar.png">
-                    <br>
-                    <button class="btn btn-primary">follow</button>
-                    <br><br>Winnie the Pooh
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="thumbnail centered">
-                    <img src="../images/useravatar.png">
-                    <br>
-                    <button class="btn btn-primary">follow</button>
-                    <br><br>Obama
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="thumbnail centered">
-                    <img src="../images/useravatar.png">
-                    <br>
-                    <button class="btn btn-primary">unfollow</button>
-                    <br><br>Henry the 8th
-                </div>
-            </div>
-        </div>
-
-        <div class="bordered centered col-md-2">
-            <div class="h2">Followees</div>
-
-            <div class="thumbnail centered smaller">
-                <img src="../images/useravatar.png">
-                <br>
-                <button class="btn btn-primary">unfollow</button>
-                <br><br>Dracula
-            </div>
-            <div class="thumbnail centered smaller">
-                <img src="../images/useravatar.png">
-                <br>
-                <button class="btn btn-primary">unfollow</button>
-                <br><br>Henry the 8th
-            </div>
-        </div>
+    <div id="users-section" class="col-md-offset-1">
     </div>
 </div>
 

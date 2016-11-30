@@ -6,10 +6,6 @@
     color: white !important;
 }
 
-.white-font:hover {
-    color: lightsteelblue !important;
-}
-
 .move-down {
     margin-top: 3%;
 }
@@ -29,5 +25,5 @@
 }
 
 .bordered {
-    border: solid 5px #e6e6e6;
+    border: 5px solid #e6e6e6;
 }

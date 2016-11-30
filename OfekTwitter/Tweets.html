@@ -6,15 +6,16 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap-theme.css">
+    <script src="../js/Tweets.js"></script>
 </head>
-<body>
+<body onload="GetAllTweets();">
 
 <nav class="navbar navbar-default">
     <div class="container-fluid nav-blue">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a class="white-font" href="Tweets.html"><img class="ofek-logo" src="../images/ofek_logo.png">
-                    <b>OfekTwitter</b></a></li>
+                    OfekTwitter</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -30,83 +31,19 @@
     <div class="row">
         <div class="col-md-offset-1">
             <div class="col-md-11">
-                <textarea class="form-control" placeholder="tweet text..."></textarea>
+                <textarea id="tweet-text" class="form-control" placeholder="tweet text..."></textarea>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-offset-1">
             <div class="col-md-11">
-                <button class="btn btn-primary btn-large pull-right">publish</button>
+                <button class="btn btn-primary btn-large pull-right" onclick="PublishTweet();">publish</button>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-offset-1">
-            <div class="col-md-10">
-                <div class="col-md-1">
-                    <img src="../images/useravatar.png">
-                </div>
-                <div class="col-md-6">
-                    <b>James Bond says:</b>
-                    <br>
-                    Blabla bla...
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="col-md-offset-1 move-down">
-            <div class="col-md-10">
-                <div class="col-md-1">
-                    <img src="../images/useravatar.png">
-                </div>
-                <div class="col-md-6">
-                    <b>James Bond says:</b>
-                    <br>
-                    Bond, James bond
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="col-md-offset-1 move-down">
-            <div class="col-md-10">
-                <div class="col-md-1">
-                    <img src="../images/useravatar.png">
-                </div>
-                <div class="col-md-6">
-                    <b>Albert Einstein says:</b>
-                    <br>
-                    E = mc^2
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="col-md-offset-1 move-down">
-            <div class="col-md-10">
-                <div class="col-md-1">
-                    <img src="../images/useravatar.png">
-                </div>
-                <div class="col-md-6">
-                    <b>Bill Gates says:</b>
-                    <br>
-                    I think 64 bytes should be enough for everyone
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="col-md-offset-1 move-down">
-            <div class="col-md-10">
-                <div class="col-md-1">
-                    <img src="../images/useravatar.png">
-                </div>
-                <div class="col-md-6">
-                    <b>Frodo says:</b>
-                    <br>
-                    My Precious
-                </div>
-            </div>
-        </div>
+    <div id="tweets-section" class="row">
     </div>
 </div>
 </body>
