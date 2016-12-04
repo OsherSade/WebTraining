@@ -12,13 +12,17 @@ var users = [
 ];
 
 function GetAllUsers() {
+    var usersDiv = document.getElementById("users-section");
+    usersDiv.innerHTML = "";
+
     var offsetDiv = document.createElement("div");
     offsetDiv.setAttribute("class", "col-md-9");
 
-    for (currentUser in users) {
+    users.forEach(function (user) {
 
         var wrappingDiv = document.createElement("div");
         wrappingDiv.setAttribute("class", "col-md-2");
+        wrappingDiv.setAttribute("id", "user_" + user.username);
 
         offsetDiv.appendChild(wrappingDiv);
 
@@ -31,18 +35,18 @@ function GetAllUsers() {
         imageDiv.appendChild(document.createElement("br"));
 
         var followButton = document.createElement("button");
-        followButton.setAttribute("id", "button_" + users[currentUser].username);
-        followButton.setAttribute("class", "btn btn-success");
-        followButton.setAttribute("onclick", "FollowUser(this, '" + users[currentUser].username + "');");
+        followButton.setAttribute("id", "button_" + user.username);
+        followButton.setAttribute("class", "btn btn-primary");
+        followButton.setAttribute("onclick", "FollowUser(this, '" + user.username + "');");
         followButton.innerHTML = "follow";
         imageDiv.appendChild(followButton);
         imageDiv.appendChild(document.createElement("br"));
         imageDiv.appendChild(document.createElement("br"));
-        imageDiv.appendChild(document.createTextNode(users[currentUser].username));
+        imageDiv.appendChild(document.createTextNode(user.username));
 
-        wrappingDiv.appendChild(imageDiv)
+        wrappingDiv.appendChild(imageDiv);
         offsetDiv.appendChild(wrappingDiv);
-    }
+    });
 
     document.getElementById("users-section").appendChild(offsetDiv);
 
@@ -60,11 +64,11 @@ function GetAllUsers() {
 
 function FollowUser(button, username) {
     var buttonText = button.innerHTML;
+    var followeesDiv = document.getElementById("followees-div");
+
     if (buttonText === "follow") {
         button.innerHTML = "unfollow";
         button.setAttribute("class", "btn btn-danger");
-
-        var followeesDiv = document.getElementById("followees-div");
 
         var userDiv = document.createElement("div");
         userDiv.setAttribute("id", username);
@@ -87,14 +91,24 @@ function FollowUser(button, username) {
     }
     else {
         button.innerHTML = "follow";
-        button.setAttribute("class", "btn btn-success");
+        button.setAttribute("class", "btn btn-primary");
 
-        var followeesDiv = document.getElementById("followees-div");
         var unfollowedUserDiv = document.getElementById(username);
         followeesDiv.removeChild(unfollowedUserDiv);
 
         var userButton = document.getElementById("button_" + username);
         userButton.innerHTML = "follow";
-        userButton.setAttribute("class", "btn btn-success");
+        userButton.setAttribute("class", "btn btn-primary");
     }
+}
+
+function FilterUsers() {
+    var filterText = document.getElementById("filter-text").value;
+
+    users.forEach(function (user) {
+        document.getElementById("user_" + user.username).style.display = "block";
+        if ((user.username).indexOf(filterText) === -1) {
+            document.getElementById("user_" + user.username).style.display = "none";
+        }
+    });
 }

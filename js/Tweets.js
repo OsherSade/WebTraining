@@ -9,7 +9,7 @@ var tweets = [
 function PublishTweet() {
     var input = document.getElementById("tweet-text").value;
     if (input != "") {
-        var newTweet = {username: 'OshWeb', text: input};
+        var newTweet = {username: 'Developer', text: input};
         tweets.push(newTweet);
         document.getElementById("tweet-text").value = "";
     }
@@ -23,7 +23,7 @@ function PublishTweet() {
 function GetAllTweets() {
     document.getElementById("tweets-section").innerHTML = "";
 
-    for (currentTweet in tweets) {
+    tweets.forEach(function (tweet) {
 
         var offsetDiv = document.createElement("div");
         offsetDiv.setAttribute("class", "col-md-offset-1 move-down");
@@ -48,13 +48,13 @@ function GetAllTweets() {
         wrappingDiv.appendChild(tweetDiv);
 
         var boldText = document.createElement("b");
-        boldText.appendChild(document.createTextNode(tweets[currentTweet].username + " says: "));
+        boldText.appendChild(document.createTextNode(tweet.username + " says: "));
 
         tweetDiv.appendChild(boldText);
         tweetDiv.appendChild(document.createElement("br"));
-        tweetDiv.appendChild(document.createTextNode(tweets[currentTweet].text));
+        tweetDiv.appendChild(document.createTextNode(tweet.text));
 
         document.getElementById("tweets-section").appendChild(offsetDiv);
         document.getElementById("tweets-section").appendChild(document.createElement("br"));
-    }
+    });
 }
