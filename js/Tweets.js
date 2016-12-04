@@ -58,3 +58,35 @@ function GetAllTweets() {
         document.getElementById("tweets-section").appendChild(document.createElement("br"));
     });
 }
+
+// Tests
+
+function RunTests() {
+    test_group('Publish tweet tests', function () {
+        assert(PublishEmptyTweet, "Tried to publish an empty tweet");
+        assert(CheckLastTweet({username: "Developer", text: "Hello World"}), "Check if the tweet was published");
+        assert(CheckTweetTextbox(), "Check if the text box is erased of it's content");
+    });
+}
+
+function PublishEmptyTweet() {
+    document.getElementById("tweet-text").value = "";
+    PublishTweet();
+
+    return tweets.length === 5;
+}
+
+function CheckLastTweet(tweet) {
+    document.getElementById("tweet-text").value = "Hello World";
+    PublishTweet();
+
+    return (tweet.username === tweets[tweets.length - 1].username &&
+    tweet.text === tweets[tweets.length - 1].text);
+}
+
+function CheckTweetTextbox() {
+    document.getElementById("tweet-text").value = "Hello World";
+    PublishTweet();
+
+    return document.getElementById("tweet-text").value === "";
+}

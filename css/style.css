@@ -27,3 +27,15 @@
 .bordered {
     border: 5px solid #e6e6e6;
 }
+
+.passed {
+    width: 99%;
+    background-color: lightgreen;
+    border: 1px solid black;
+}
+
+.failed {
+    width: 99%;
+    background-color: lightcoral;
+    border: 1px solid black;
+}
