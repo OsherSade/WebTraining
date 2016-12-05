@@ -14,10 +14,10 @@ var users = [
 function GetAllUsers() {
     var docfrag = document.createDocumentFragment();
 
-    var filterButton = document.getElementById("filter-button");
+    var filterButton = $("#filter-button").elements[0];
     filterButton.addEventListener("click", FilterUsers, false);
 
-    var usersDiv = document.getElementById("users-section");
+    var usersDiv = $("#users-section").elements[0];
     usersDiv.innerHTML = "";
 
     var offsetDiv = document.createElement("div");
@@ -27,7 +27,7 @@ function GetAllUsers() {
 
         var wrappingDiv = document.createElement("div");
         wrappingDiv.setAttribute("class", "col-md-2");
-        wrappingDiv.setAttribute("id", "user_" + user.username);
+        wrappingDiv.setAttribute("id", "user_" + user.username.replace(/\s/g, ''));
 
         offsetDiv.appendChild(wrappingDiv);
 
@@ -40,7 +40,7 @@ function GetAllUsers() {
         imageDiv.appendChild(document.createElement("br"));
 
         var followButton = document.createElement("button");
-        followButton.setAttribute("id", "button_" + user.username);
+        followButton.setAttribute("id", "button_" + user.username.replace(/\s/g, ''));
         followButton.setAttribute("class", "btn btn-primary");
         followButton.setAttribute("onclick", "FollowUser(this, '" + user.username + "');");
         followButton.innerHTML = "follow";
@@ -54,7 +54,7 @@ function GetAllUsers() {
     });
 
     docfrag.appendChild(offsetDiv);
-    document.getElementById("users-section").appendChild(docfrag);
+    usersDiv.appendChild(docfrag);
 
     var followeesDiv = document.createElement("div");
     followeesDiv.setAttribute("class", "bordered centered col-md-2");
@@ -65,19 +65,19 @@ function GetAllUsers() {
     followeesTitle.innerHTML = "Followees";
 
     followeesDiv.appendChild(followeesTitle);
-    document.getElementById("users-section").appendChild(followeesDiv);
+    usersDiv.appendChild(followeesDiv);
 }
 
 function FollowUser(button, username) {
     var buttonText = button.innerHTML;
-    var followeesDiv = document.getElementById("followees-div");
+    var followeesDiv = $("#followees-div").elements[0];
 
     if (buttonText === "follow") {
         button.innerHTML = "unfollow";
         button.setAttribute("class", "btn btn-danger");
 
         var userDiv = document.createElement("div");
-        userDiv.setAttribute("id", username);
+        userDiv.setAttribute("id", username.replace(/\s/g, ''));
         userDiv.setAttribute("class", "thumbnail centered smaller");
         var image = document.createElement("img");
         image.setAttribute("src", "../images/useravatar.png");
@@ -99,22 +99,22 @@ function FollowUser(button, username) {
         button.innerHTML = "follow";
         button.setAttribute("class", "btn btn-primary");
 
-        var unfollowedUserDiv = document.getElementById(username);
+        var unfollowedUserDiv = $("#" + username.replace(/\s/g, '')).elements[0];
         followeesDiv.removeChild(unfollowedUserDiv);
 
-        var userButton = document.getElementById("button_" + username);
+        var userButton = $("#button_" + username.replace(/\s/g, '')).elements[0];
         userButton.innerHTML = "follow";
         userButton.setAttribute("class", "btn btn-primary");
     }
 }
 
 function FilterUsers() {
-    var filterText = document.getElementById("filter-text").value;
+    var filterText = $("#filter-text").elements[0].value;
 
     users.forEach(function (user) {
-        document.getElementById("user_" + user.username).style.display = "block";
+        $("#user_" + user.username.replace(/\s/g, '')).css("display", "block");
         if ((user.username).indexOf(filterText) === -1) {
-            document.getElementById("user_" + user.username).style.display = "none";
+            $("#user_" + user.username.replace(/\s/g, '')).css("display", "none");
         }
     });
 }
