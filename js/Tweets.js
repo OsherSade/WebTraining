@@ -7,11 +7,11 @@ var tweets = [
 ];
 
 function PublishTweet() {
-    var input = document.getElementById("tweet-text").value;
+    var input = $("#tweet-text").elements[0].value
     if (input != "") {
         var newTweet = {username: 'Developer', text: input};
         tweets.push(newTweet);
-        document.getElementById("tweet-text").value = "";
+        $("#tweet-text").elements[0].value = "";
     }
     else {
         alert("Can't publish an empty tweet!");
@@ -21,10 +21,10 @@ function PublishTweet() {
 }
 
 function GetAllTweets() {
-    var publishButton = document.getElementById("publish-button");
+    var publishButton = $("#publish-button").elements[0];
     publishButton.addEventListener("click", PublishTweet, false);
 
-    document.getElementById("tweets-section").innerHTML = "";
+    $("#tweets-section").elements[0].innerHTML = "";
 
     tweets.forEach(function (tweet) {
         AppendTweetDiv(tweet.username, tweet.text);
@@ -64,8 +64,8 @@ function AppendTweetDiv(username, text) {
     tweetDiv.appendChild(document.createTextNode(text));
 
     docfrag.appendChild(offsetDiv);
-    document.getElementById("tweets-section").appendChild(docfrag);
-    document.getElementById("tweets-section").appendChild(document.createElement("br"));
+    $("#tweets-section").elements[0].appendChild(docfrag);
+    $("#tweets-section").elements[0].appendChild(document.createElement("br"));
 }
 
 // Tests
@@ -79,14 +79,14 @@ function RunTests() {
 }
 
 function PublishEmptyTweet() {
-    document.getElementById("tweet-text").value = "";
+    $("#tweet-text").elements[0].value = "";
     PublishTweet();
 
     return tweets.length === 5;
 }
 
 function CheckLastTweet(tweet) {
-    document.getElementById("tweet-text").value = "Hello World";
+    $("#tweet-text").elements[0].value = "Hello World"
     PublishTweet();
 
     return (tweet.username === tweets[tweets.length - 1].username &&
@@ -94,7 +94,7 @@ function CheckLastTweet(tweet) {
 }
 
 function CheckTweetTextbox() {
-    document.getElementById("tweet-text").value = "Hello World";
+    $("#tweet-text").elements[0].value = "Welcome to OfekTwitter!";
     PublishTweet();
 
     return document.getElementById("tweet-text").value === "";
