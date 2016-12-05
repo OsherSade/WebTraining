@@ -12,6 +12,11 @@ var users = [
 ];
 
 function GetAllUsers() {
+    var docfrag = document.createDocumentFragment();
+
+    var filterButton = document.getElementById("filter-button");
+    filterButton.addEventListener("click", FilterUsers, false);
+
     var usersDiv = document.getElementById("users-section");
     usersDiv.innerHTML = "";
 
@@ -48,7 +53,8 @@ function GetAllUsers() {
         offsetDiv.appendChild(wrappingDiv);
     });
 
-    document.getElementById("users-section").appendChild(offsetDiv);
+    docfrag.appendChild(offsetDiv);
+    document.getElementById("users-section").appendChild(docfrag);
 
     var followeesDiv = document.createElement("div");
     followeesDiv.setAttribute("class", "bordered centered col-md-2");

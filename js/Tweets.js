@@ -17,46 +17,55 @@ function PublishTweet() {
         alert("Can't publish an empty tweet!");
     }
 
-    GetAllTweets();
+    AppendTweetDiv(newTweet.username, newTweet.text);
 }
 
 function GetAllTweets() {
+    var publishButton = document.getElementById("publish-button");
+    publishButton.addEventListener("click", PublishTweet, false);
+
     document.getElementById("tweets-section").innerHTML = "";
 
     tweets.forEach(function (tweet) {
-
-        var offsetDiv = document.createElement("div");
-        offsetDiv.setAttribute("class", "col-md-offset-1 move-down");
-
-        var wrappingDiv = document.createElement("div");
-        wrappingDiv.setAttribute("class", "col-md-10");
-
-        offsetDiv.appendChild(wrappingDiv);
-
-        var imageDiv = document.createElement("div");
-        imageDiv.setAttribute("class", "col-md-1");
-
-        var image = document.createElement("img");
-        image.setAttribute("src", "../images/useravatar.png");
-
-        imageDiv.appendChild(image);
-
-        var tweetDiv = document.createElement("div");
-        tweetDiv.setAttribute("class", "col-md-6");
-
-        wrappingDiv.appendChild(imageDiv);
-        wrappingDiv.appendChild(tweetDiv);
-
-        var boldText = document.createElement("b");
-        boldText.appendChild(document.createTextNode(tweet.username + " says: "));
-
-        tweetDiv.appendChild(boldText);
-        tweetDiv.appendChild(document.createElement("br"));
-        tweetDiv.appendChild(document.createTextNode(tweet.text));
-
-        document.getElementById("tweets-section").appendChild(offsetDiv);
-        document.getElementById("tweets-section").appendChild(document.createElement("br"));
+        AppendTweetDiv(tweet.username, tweet.text);
     });
+}
+
+function AppendTweetDiv(username, text) {
+    var docfrag = document.createDocumentFragment();
+
+    var offsetDiv = document.createElement("div");
+    offsetDiv.setAttribute("class", "col-md-offset-1 move-down");
+
+    var wrappingDiv = document.createElement("div");
+    wrappingDiv.setAttribute("class", "col-md-10");
+
+    offsetDiv.appendChild(wrappingDiv);
+
+    var imageDiv = document.createElement("div");
+    imageDiv.setAttribute("class", "col-md-1");
+
+    var image = document.createElement("img");
+    image.setAttribute("src", "../images/useravatar.png");
+
+    imageDiv.appendChild(image);
+
+    var tweetDiv = document.createElement("div");
+    tweetDiv.setAttribute("class", "col-md-6");
+
+    wrappingDiv.appendChild(imageDiv);
+    wrappingDiv.appendChild(tweetDiv);
+
+    var boldText = document.createElement("b");
+    boldText.appendChild(document.createTextNode(username + " says: "));
+
+    tweetDiv.appendChild(boldText);
+    tweetDiv.appendChild(document.createElement("br"));
+    tweetDiv.appendChild(document.createTextNode(text));
+
+    docfrag.appendChild(offsetDiv);
+    document.getElementById("tweets-section").appendChild(docfrag);
+    document.getElementById("tweets-section").appendChild(document.createElement("br"));
 }
 
 // Tests

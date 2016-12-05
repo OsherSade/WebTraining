@@ -2,59 +2,76 @@ $ = function (query) {
     return new OfekQuery(query);
 };
 
-var OfekQuery = function (query) {
-    this.elements = [];
+const OfekQuery = function (query) {
+    let collection;
     if (query === undefined) return;
-    var queryParts = query.split(" ");
-    if (queryParts[0].charAt(0) !== "#" && queryParts[0].charAt(0) !== ".") {
-        if (queryParts.length > 1) {
-            this.elements = document.querySelectorAll(queryParts[0] + queryParts[1]);
+
+    this.elements = [document];
+    const queryParts = query.split(" ");
+    for (let currQueryPart of queryParts) {
+        let token = currQueryPart.charAt(0);
+        let newElements = [];
+
+        if (token === "#") {
+            newElements = [document.getElementById(currQueryPart.substring(1))];
         }
-        else
-            this.elements = document.getElementsByTagName(queryParts[0]);
-    }
-    else if (queryParts[0].charAt(0) === "#") {
-        this.elements = document.getElementById(queryParts[0].substr(1, queryParts[0].length));
+        else {
+            for (let currObject of this.elements) {
+                if (token === ".") {
+                    collection = currObject.getElementsByClassName(currQueryPart.substring(1));
+                }
+                else {
+                    collection = currObject.getElementsByTagName(currQueryPart);
+                }
+                newElements = AddCollection(newElements, collection);
+            }
+        }
+
+        this.elements = newElements;
     }
 
-    else if (queryParts[0].charAt(0) === ".") {
-        this.elements = document.getElementsByClassName(queryParts[0].substr(1, queryParts[0].length));
+    function AddCollection(collection, classes) {
+        for (let currClass of classes) {
+            collection.push(currClass);
+        }
+
+        return collection;
     }
 
     this.addClass = function (classToAdd) {
-        for (var i = 0; i < this.elements.length; i++) {
-            this.elements[i].className += " " + classToAdd;
+        for (let currElement of this.elements) {
+            currElement.className += " " + classToAdd;
         }
     };
 
     this.removeClass = function (classToRemove) {
-        for (var i = 0; i < this.elements.length; i++) {
-            this.elements[i].classList.remove(classToRemove);
+        for (let currElement of this.elements) {
+            currElement.classList.remove(classToRemove);
         }
     };
 
     this.each = function (fn) {
-        for (var i = 0; i < this.elements.length; i++) {
-            fn(this.elements[i]);
+        for (let currElement of this.elements) {
+            fn(currElement);
         }
     };
 
     this.map = function (fn) {
-        var mappedElements = [];
-        for (var i = 0; i < this.elements.length; i++) {
-            mappedElements.push(fn(this.elements[i]));
+        let mappedElements = [];
+        for (let currElement of this.elements) {
+            mappedElements.push(fn(currElement));
         }
 
         return mappedElements;
     };
 
     this.any = function () {
-        var args = Array.prototype.slice.call(arguments);
+        let args = Array.prototype.slice.call(arguments);
 
-        for (var i = 0; i < args.length; i++) {
-            var passed = true;
-            for (var j = 0; j < this.elements.length; j++) {
-                if (!args[i](this.elements[j])) {
+        for (let i = 0; i < args.length; i++) {
+            let passed = true;
+            for (let currElement of this.elements) {
+                if (!args[i](currElement)) {
                     passed = false;
                 }
             }
@@ -65,11 +82,11 @@ var OfekQuery = function (query) {
     };
 
     this.all = function () {
-        var args = Array.prototype.slice.call(arguments);
+        let args = Array.prototype.slice.call(arguments);
 
-        for (var i = 0; i < args.length; i++) {
-            for (var j = 0; j < this.elements.length; j++) {
-                if (!args[i](this.elements[j])) {
+        for (let i = 0; i < args.length; i++) {
+            for (let currElement of this.elements) {
+                if (!args[i](currElement)) {
                     return false;
                 }
             }
@@ -79,14 +96,14 @@ var OfekQuery = function (query) {
     };
 
     this.filter = function () {
-        var args = Array.prototype.slice.call(arguments);
-        var newOfekQuery = new OfekQuery(query);
+        let args = Array.prototype.slice.call(arguments);
+        let newOfekQuery = new OfekQuery(query);
         newOfekQuery.elements = [];
 
-        for (var i = 0; i < args.length; i++) {
-            for (var j = 0; j < this.elements.length; j++) {
-                if (args[i](this.elements[j])) {
-                    newOfekQuery.elements.push(this.elements[j]);
+        for (let i = 0; i < args.length; i++) {
+            for (let currElement of this.elements) {
+                if (args[i](currElement)) {
+                    newOfekQuery.elements.push(currElement);
                 }
             }
         }
@@ -95,8 +112,8 @@ var OfekQuery = function (query) {
     };
 
     this.css = function (property, value) {
-        for (var i = 0; i < this.elements.length; i++) {
-            this.elements[i].style.cssText += (property + ": " + value);
+        for (let currElement of this.elements) {
+            currElement.style.cssText += (property + ": " + value);
         }
     };
 
@@ -105,23 +122,23 @@ var OfekQuery = function (query) {
     };
 
     this.appendChild = function (childElement) {
-        for (var i = 0; i < this.elements.length; i++) {
-            this.elements[i].appendChild(document.createElement(childElement));
+        for (let currElement of this.elements) {
+            currElement.appendChild(document.createElement(childElement));
         }
     };
 
     this.getAttribute = function (attributeName) {
-        var elementsAttributes = [];
-        for (var i = 0; i < this.elements.length; i++) {
-            elementsAttributes.push(this.elements[i].getAttribute(attributeName));
+        let elementsAttributes = [];
+        for (let currElement of this.elements) {
+            elementsAttributes.push(currElement.getAttribute(attributeName));
         }
 
         return elementsAttributes;
     };
 
     this.setAttribute = function (attributeName, attributeValue) {
-        for (var i = 0; i < this.elements.length; i++) {
-            this.elements[i].setAttribute(attributeName, attributeValue);
+        for (let currElement of this.elements) {
+            currElement.setAttribute(attributeName, attributeValue);
         }
     };
 
