@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap-theme.css">
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="../js/OfekTestFramework.js"></script>
+    <script src="../js/OfekQuery.js"></script>
+    <script src="../js/Users.js"></script>
+</head>
+<body onload="GetAllUsers();">
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid nav-blue">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a class="white-font" href="Tweets.html"><img class="ofek-logo" src="../images/ofek_logo.png">
+                    OfekTwitter</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="white-font" href="Users.html">Users</a></li>
+                <li><a class="white-font">Sign in</a></li>
+                <li><a class="white-font">Sign up</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col-md-offset-1">
+        <div class="col-md-5">
+            <div class="col-md-8">
+                <input id="filter-text" type="text" class="form-control" placeholder="filter by user name">
+            </div>
+            <div class="col-md-4">
+                <button id="filter-button" class="btn btn-primary">ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div id="users-section" class="col-md-offset-1">
+    </div>
+</div>
+<div class="container-fluid" id="test-results">
+</div>
+</body>
+</html>
