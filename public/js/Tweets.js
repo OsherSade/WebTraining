@@ -1,9 +1,13 @@
 var tweets = [];
 var users = [];
-var loggedUserId = 'c28dd406-3595-42f6-8e36-15d4cd495293';
+var loggedUserId;
 
 function PublishTweet() {
-    var input = $("#tweet-text").elements[0].value
+    var input = $("#tweet-text").elements[0].value;
+    if (loggedUserId === undefined) {
+        alert("You must login in order to publish a tweet");
+        return;
+    }
     if (input != "") {
         var newTweet = {user: loggedUserId, text: input};
         addToJsonFile(newTweet);
@@ -36,8 +40,6 @@ function addToJsonFile(newTweet) {
 }
 
 function GetAllTweets() {
-    var publishButton = $("#publish-button").elements[0];
-    publishButton.addEventListener("click", PublishTweet, false);
 
     $("#tweets-section").elements[0].innerHTML = "";
 
@@ -101,6 +103,59 @@ function AppendTweetDiv(username, text) {
     docfrag.appendChild(offsetDiv);
     $("#tweets-section").elements[0].appendChild(docfrag);
     $("#tweets-section").elements[0].appendChild(document.createElement("br"));
+}
+
+function GetLoggedUser() {
+    var publishButton = $("#publish-button").elements[0];
+    publishButton.addEventListener("click", PublishTweet, false);
+
+    var logoutButton = $("#log-out").elements[0];
+    logoutButton.addEventListener("click", Logout, false);
+
+    axios.get('http://127.0.0.1:8080/loggedUser')
+        .then(function (response) {
+            loggedUserId = response.data._id;
+            if (loggedUserId !== undefined) {
+                HideLogTabs();
+                GetAllTweets();
+            }
+            else {
+                window.location = "/OfekTwitter/SignIn.html";
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+function HideLogTabs() {
+    var elements = $(".guest").elements;
+    elements.forEach(function (element) {
+        element.style.display = "none";
+    });
+    $("#log-out").css("display", "block");
+}
+
+function ShowLogTabs() {
+    $("#tweets-section").css("display", "block");
+
+    var elements = $(".guest").elements;
+    elements.forEach(function (element) {
+        element.style.display = "block";
+    });
+    $("#log-out").css("display", "none");
+}
+
+function Logout() {
+    axios.get('http://127.0.0.1:8080/logout')
+        .then(function (response) {
+            loggedUserId = undefined;
+            ShowLogTabs();
+            $("#tweets-section").css("display", "none");
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }
 
 // Tests

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap-theme.css">
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="../js/OfekTestFramework.js"></script>
+    <script src="../js/OfekQuery.js"></script>
+    <script src="../js/Login.js"></script>
+</head>
+<body onload="registerEvents();">
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid nav-blue">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a class="white-font" href="Tweets.html"><img class="ofek-logo" src="../images/ofek_logo.png">
+                    OfekTwitter</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="white-font" href="Users.html">Users</a></li>
+                <li><a class="white-font guest" href="SignIn.html">Sign in</a></li>
+                <li><a class="white-font guest" href="SignUp.html">Sign up</a></li>
+                <li><a id="log-out" class="white-font">Log out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-offset-3">
+            <div class="col-md-7">
+                <div class="panel panel-primary">
+                    <div class="panel-heading"><h3 class="panel-title">Log in</h3></div>
+                    <div class="col-md-offset-1">
+                        <div id="login-form" class="panel-body">
+                            <div class="col-md-3">
+                                <b>Username</b>
+                            </div>
+                            <div class="col-md-7">
+                                <input type="text" id="username" class="form-control" placeholder="Enter username">
+                            </div>
+
+                            <div class="col-md-3 move-down">
+                                <b>Password</b>
+                            </div>
+                            <div class="col-md-7 move-down">
+                                <input type="text" id="password" class="form-control" placeholder="Enter password">
+                            </div>
+
+                            <div class="col-md-4 move-down">
+                                <div class="col-md-offset-12">
+                                    <button id="sign-in-button" class="btn btn-primary btn-large">login
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

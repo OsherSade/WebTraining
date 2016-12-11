@@ -1,12 +1,11 @@
 var users = [];
-var loggedUserId = 'c28dd406-3595-42f6-8e36-15d4cd495293';
+var loggedUserId;
 
 function GetAllUsers() {
     axios.get('http://127.0.0.1:8080/users')
         .then(function (response) {
             users = response.data;
-            AppendUsers();
-            GetFollowees();
+            GetLoggedUser();
         })
         .catch(function (error) {
             console.log(error);
@@ -15,6 +14,9 @@ function GetAllUsers() {
 
 function AppendUsers() {
     var docfrag = document.createDocumentFragment();
+
+    var logoutButton = $("#log-out").elements[0];
+    logoutButton.addEventListener("click", Logout, false);
 
     var filterButton = $("#filter-button").elements[0];
     filterButton.addEventListener("click", FilterUsers, false);
@@ -27,32 +29,34 @@ function AppendUsers() {
 
     users.forEach(function (user) {
 
-        var wrappingDiv = document.createElement("div");
-        wrappingDiv.setAttribute("class", "col-md-2");
-        wrappingDiv.setAttribute("id", "user_" + user.username.replace(/\s/g, ''));
+        if (user._id !== loggedUserId) {
+            var wrappingDiv = document.createElement("div");
+            wrappingDiv.setAttribute("class", "col-md-2");
+            wrappingDiv.setAttribute("id", "user_" + user.username.replace(/\s/g, ''));
 
-        offsetDiv.appendChild(wrappingDiv);
+            offsetDiv.appendChild(wrappingDiv);
 
-        var imageDiv = document.createElement("div");
-        imageDiv.setAttribute("class", "thumbnail centered");
+            var imageDiv = document.createElement("div");
+            imageDiv.setAttribute("class", "thumbnail centered");
 
-        var image = document.createElement("img");
-        image.setAttribute("src", "../images/useravatar.png");
-        imageDiv.appendChild(image);
-        imageDiv.appendChild(document.createElement("br"));
+            var image = document.createElement("img");
+            image.setAttribute("src", "../images/useravatar.png");
+            imageDiv.appendChild(image);
+            imageDiv.appendChild(document.createElement("br"));
 
-        var followButton = document.createElement("button");
-        followButton.setAttribute("id", "button_" + user.username.replace(/\s/g, ''));
-        followButton.setAttribute("class", "btn btn-primary");
-        followButton.setAttribute("onclick", "FollowUser(this, '" + user.username + "');");
-        followButton.innerHTML = "follow";
-        imageDiv.appendChild(followButton);
-        imageDiv.appendChild(document.createElement("br"));
-        imageDiv.appendChild(document.createElement("br"));
-        imageDiv.appendChild(document.createTextNode(user.username));
+            var followButton = document.createElement("button");
+            followButton.setAttribute("id", "button_" + user.username.replace(/\s/g, ''));
+            followButton.setAttribute("class", "btn btn-primary");
+            followButton.setAttribute("onclick", "FollowUser(this, '" + user.username + "');");
+            followButton.innerHTML = "follow";
+            imageDiv.appendChild(followButton);
+            imageDiv.appendChild(document.createElement("br"));
+            imageDiv.appendChild(document.createElement("br"));
+            imageDiv.appendChild(document.createTextNode(user.username));
 
-        wrappingDiv.appendChild(imageDiv);
-        offsetDiv.appendChild(wrappingDiv);
+            wrappingDiv.appendChild(imageDiv);
+            offsetDiv.appendChild(wrappingDiv);
+        }
     });
 
     docfrag.appendChild(offsetDiv);
@@ -105,22 +109,24 @@ function FilterUsers() {
 }
 
 function GetFollowees() {
-    axios.get('http://127.0.0.1:8080/users/' + loggedUserId)
-        .then(function (response) {
-            var currentUser = response.data;
-            currentUser.following.forEach(function (followee) {
-                axios.get('http://127.0.0.1:8080/users/' + followee)
-                    .then(function (response) {
-                        appendFollowee(response.data.username);
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+    if (loggedUserId !== undefined) {
+        axios.get('http://127.0.0.1:8080/users/' + loggedUserId)
+            .then(function (response) {
+                var currentUser = response.data;
+                currentUser.following.forEach(function (followee) {
+                    axios.get('http://127.0.0.1:8080/users/' + followee)
+                        .then(function (response) {
+                            appendFollowee(response.data.username);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
             });
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+    }
 }
 
 function appendFollowee(username) {
@@ -193,4 +199,53 @@ function GetUserId(username) {
             userId = user._id;
     });
     return userId;
+}
+
+function GetLoggedUser() {
+    axios.get('http://127.0.0.1:8080/loggedUser')
+        .then(function (response) {
+            loggedUserId = response.data._id;
+            if (loggedUserId !== undefined) {
+                HideLogTabs();
+                AppendUsers();
+                GetFollowees();
+            }
+            else {
+                window.location = "/OfekTwitter/SignIn.html";
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+function HideLogTabs() {
+    var elements = $(".guest").elements;
+    elements.forEach(function (element) {
+        element.style.display = "none";
+    });
+
+    $("#log-out").css("display", "block");
+}
+
+function ShowLogTabs() {
+    $("#users-section").css("display", "block");
+    var elements = $(".guest").elements;
+    elements.forEach(function (element) {
+        element.style.display = "block";
+    });
+
+    $("#log-out").css("display", "none");
+}
+
+function Logout() {
+    axios.get('http://127.0.0.1:8080/logout')
+        .then(function (response) {
+            loggedUserId = undefined;
+            ShowLogTabs();
+            $("#users-section").css("display", "none");
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }

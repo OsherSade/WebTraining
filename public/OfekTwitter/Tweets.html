@@ -11,7 +11,7 @@
     <script src="../js/OfekQuery.js"></script>
     <script src="../js/Tweets.js"></script>
 </head>
-<body onload="GetAllTweets();">
+<body onload="GetLoggedUser();">
 
 <nav class="navbar navbar-default">
     <div class="container-fluid nav-blue">
@@ -23,8 +23,9 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li><a class="white-font" href="Users.html">Users</a></li>
-                <li><a class="white-font">Sign in</a></li>
-                <li><a class="white-font">Sign up</a></li>
+                <li><a class="white-font guest" href="SignIn.html">Sign in</a></li>
+                <li><a class="white-font guest" href="SignUp.html">Sign up</a></li>
+                <li><a id="log-out" class="white-font">Log out</a></li>
             </ul>
         </div>
     </div>

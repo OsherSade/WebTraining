@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap-theme.css">
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="../js/OfekTestFramework.js"></script>
+    <script src="../js/OfekQuery.js"></script>
+    <script src="../js/SignUp.js"></script>
+</head>
+<body onload="registerEvents();">
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid nav-blue">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a class="white-font" href="Tweets.html"><img class="ofek-logo" src="../images/ofek_logo.png">
+                    OfekTwitter</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="white-font" href="Users.html">Users</a></li>
+                <li><a class="white-font" href="SignIn.html">Sign in</a></li>
+                <li><a class="white-font" href="SignUp.html">Sign up</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-offset-3">
+            <div class="col-md-7">
+                <div class="panel panel-primary">
+                    <div class="panel-heading"><h3 class="panel-title">Sign up</h3></div>
+                    <div class="col-md-offset-1">
+                        <div class="panel-body">
+                            <div class="col-md-5">
+                                <b>Username</b>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" id="username" class="form-control" placeholder="Enter username">
+                            </div>
+
+                            <div class="col-md-5 move-down">
+                                <b>Password</b>
+                            </div>
+                            <div class="col-md-6 move-down">
+                                <input type="text" id="password" class="form-control" placeholder="Enter password">
+                            </div>
+
+                            <div class="col-md-5 move-down">
+                                <b>Confirm Password</b>
+                            </div>
+                            <div class="col-md-6 move-down">
+                                <input type="text" id="confirm-password" class="form-control"
+                                       placeholder="Confirm password">
+                            </div>
+
+                            <div class="col-md-4 move-down">
+                                <div class="col-md-offset-12">
+                                    <button id="sign-up-button" class="btn btn-primary btn-large">sign up
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

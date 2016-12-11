@@ -4,7 +4,13 @@ let bodyParser = require('./public/node_modules/body-parser');
 let app = express();
 let fs = require('fs');
 app.use(bodyParser.json());
+let session = require('./public/node_modules/express-session');
 
+app.use(session({
+    secret: 'OfekTwitter'
+}));
+
+let PORT = 8080;
 app.use(express.static('./public'));
 
 app.use(function (req, res, next) {
@@ -131,9 +137,55 @@ app.put('/follow', function (req, res) {
 });
 
 app.put('/users', function (req, res) {
+    let username = req.body.username;
+    let userId = Math.floor((Math.random() * 1000) + 1).toString();
+    let password = req.body.password;
+
+    let allUsers;
+    fs.readFile('users.json', 'utf8', function (err, data) {
+        if (err) throw err;
+        allUsers = JSON.parse(data);
+        let currentUser = {"_id": userId, "username": username, "password": password, "following": []};
+        req.session.loggedUser = currentUser;
+
+        allUsers.push(currentUser);
+
+        fs.writeFile('users.json', JSON.stringify(allUsers), function (err) {
+            console.log(err);
+        });
+
+        res.send(username);
+    });
 });
 
 app.put('/login', function (req, res) {
+    let username = req.body.username;
+    let password = req.body.password;
+    let user;
+    let allUsers;
+    fs.readFile('users.json', 'utf8', function (err, data) {
+        if (err) throw err;
+        allUsers = JSON.parse(data);
+        allUsers.forEach(function (currentUser) {
+            if (currentUser.username === username && currentUser.password === password) {
+                user = currentUser;
+                req.session.loggedUser = currentUser;
+            }
+        });
+
+        res.send(user);
+    });
 });
 
-app.listen(8080);
+app.get('/loggedUser', function (req, res) {
+    res.send(req.session.loggedUser);
+});
+
+app.get('/logout', function (req, res) {
+    req.session.loggedUser = undefined;
+    res.send(req.session.loggedUser);
+});
+
+app.listen(PORT, function () {
+    console.log('Server listening on port: ' + PORT);
+});
