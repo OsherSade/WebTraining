@@ -1,17 +1,17 @@
-let express = require('./public/node_modules/express');
-let path = require('./public/node_modules/path');
-let bodyParser = require('./public/node_modules/body-parser');
-let app = express();
-let fs = require('fs');
+var express = require('../public/node_modules/express/index');
+var path = require('../public/node_modules/path/path');
+var bodyParser = require('../public/node_modules/body-parser/index');
+var app = express();
+var fs = require('fs');
 app.use(bodyParser.json());
-let session = require('./public/node_modules/express-session');
+var session = require('../public/node_modules/express-session/index');
 
 app.use(session({
     secret: 'OfekTwitter'
 }));
 
-let PORT = 8080;
-app.use(express.static('./public'));
+var PORT = 8080;
+app.use(express.static('../public'));
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -24,8 +24,8 @@ app.get('/users', function (req, res) {
 });
 
 app.get('/users/:id', function (req, res) {
-    let allUsers;
-    let selectedUser;
+    var allUsers;
+    var selectedUser;
     fs.readFile('users.json', 'utf8', function (err, data) {
         if (err) throw err;
         allUsers = JSON.parse(data);
@@ -39,8 +39,8 @@ app.get('/users/:id', function (req, res) {
 });
 
 app.get('/users/following/:id', function (req, res) {
-    let allUsers;
-    let selectedUsers = [];
+    var allUsers;
+    var selectedUsers = [];
     fs.readFile('users.json', 'utf8', function (err, data) {
         if (err) throw err;
         allUsers = JSON.parse(data);
@@ -62,8 +62,8 @@ app.get('/tweets', function (req, res) {
 });
 
 app.get('/tweets/:userId', function (req, res) {
-    let allTweets;
-    let selectedTweets = [];
+    var allTweets;
+    var selectedTweets = [];
     fs.readFile('tweets.json', 'utf8', function (err, data) {
         if (err) throw err;
         allTweets = JSON.parse(data);
@@ -78,9 +78,9 @@ app.get('/tweets/:userId', function (req, res) {
 });
 
 app.put('/tweets', function (req, res) {
-    let user = req.body.user;
-    let text = req.body.text;
-    let allTweets = [];
+    var user = req.body.user;
+    var text = req.body.text;
+    var allTweets = [];
 
     fs.readFile('tweets.json', 'utf8', function (err, data) {
         if (err) throw err;
@@ -94,10 +94,10 @@ app.put('/tweets', function (req, res) {
 });
 
 app.put('/unfollow', function (req, res) {
-    let userId = req.body.userId;
-    let unfollowedId = req.body.unfollowedId;
+    var userId = req.body.userId;
+    var unfollowedId = req.body.unfollowedId;
 
-    let allUsers;
+    var allUsers;
     fs.readFile('users.json', 'utf8', function (err, data) {
         if (err) throw err;
         allUsers = JSON.parse(data);
@@ -118,10 +118,10 @@ app.put('/unfollow', function (req, res) {
 });
 
 app.put('/follow', function (req, res) {
-    let userId = req.body.userId;
-    let followedId = req.body.followedId;
+    var userId = req.body.userId;
+    var followedId = req.body.followedId;
 
-    let allUsers;
+    var allUsers;
     fs.readFile('users.json', 'utf8', function (err, data) {
         if (err) throw err;
         allUsers = JSON.parse(data);
@@ -137,15 +137,15 @@ app.put('/follow', function (req, res) {
 });
 
 app.put('/users', function (req, res) {
-    let username = req.body.username;
-    let userId = Math.floor((Math.random() * 1000) + 1).toString();
-    let password = req.body.password;
+    var username = req.body.username;
+    var userId = Math.floor((Math.random() * 1000) + 1).toString();
+    var password = req.body.password;
 
-    let allUsers;
+    var allUsers;
     fs.readFile('users.json', 'utf8', function (err, data) {
         if (err) throw err;
         allUsers = JSON.parse(data);
-        let currentUser = {"_id": userId, "username": username, "password": password, "following": []};
+        var currentUser = {"_id": userId, "username": username, "password": password, "following": []};
         req.session.loggedUser = currentUser;
 
         allUsers.push(currentUser);
@@ -159,10 +159,10 @@ app.put('/users', function (req, res) {
 });
 
 app.put('/login', function (req, res) {
-    let username = req.body.username;
-    let password = req.body.password;
-    let user;
-    let allUsers;
+    var username = req.body.username;
+    var password = req.body.password;
+    var user;
+    var allUsers;
     fs.readFile('users.json', 'utf8', function (err, data) {
         if (err) throw err;
         allUsers = JSON.parse(data);

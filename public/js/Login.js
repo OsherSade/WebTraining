@@ -1,15 +1,15 @@
 var loggedUser = undefined;
 
 function registerEvents() {
-    let loginButton = $("#sign-in-button").elements[0];
+    var loginButton = $("#sign-in-button").elements[0];
     loginButton.addEventListener("click", Login, false);
 
     GetLoggedUser();
 }
 
 function Login() {
-    let username = $("#username").elements[0].value;
-    let password = $("#password").elements[0].value;
+    var username = $("#username").elements[0].value;
+    var password = $("#password").elements[0].value;
 
     if (username === "" || password === "") {
         alert("Fields can't be empty!");

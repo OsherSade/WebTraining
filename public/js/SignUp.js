@@ -1,21 +1,14 @@
 function registerEvents() {
-    let registerButton = $("#sign-up-button").elements[0];
+    var registerButton = $("#sign-up-button").elements[0];
     registerButton.addEventListener("click", Register, false);
 }
 
 function Register() {
-    let username = $("#username").elements[0].value;
-    let password = $("#password").elements[0].value;
-    let confirmPassword = $("#confirm-password").elements[0].value;
+    var username = $("#username").elements[0].value;
+    var password = $("#password").elements[0].value;
+    var confirmPassword = $("#confirm-password").elements[0].value;
 
-    if (username === "" || password === "" || confirmPassword === "") {
-        alert("Fields can't be empty!");
-    }
-
-    else if (password !== confirmPassword) {
-        alert("The password wasn't confirmed");
-    }
-    else {
+    if (ValidateDetails(username, password, confirmPassword)) {
         axios.put('/users', {
             username: username,
             password: password
@@ -29,3 +22,34 @@ function Register() {
             });
     }
 }
+
+function ValidateDetails(username, password, confirmPassword) {
+    if (username === "" || password === "" || confirmPassword === "") {
+        alert("Fields can't be empty!");
+        return false;
+    }
+
+    else if (password !== confirmPassword) {
+        alert("The password wasn't confirmed");
+        return false;
+    }
+
+    return true;
+}
+
+describe("ValidateDetails", function () {
+    it("will alert about empty fields", function () {
+        var result = ValidateDetails("Hello", "World", "");
+        expect(result).toBe(false);
+    });
+
+    it("will alert about password confirmation", function () {
+        var result = ValidateDetails("OfekTwitter", "123", "456");
+        expect(result).toBe(false);
+    });
+
+    it("will pass the validation", function () {
+        var result = ValidateDetails("OfekTwitter", "123", "123");
+        expect(result).toBe(true);
+    });
+});

@@ -101,8 +101,7 @@ function AppendTweetDiv(username, text) {
     tweetDiv.appendChild(document.createTextNode(text));
 
     docfrag.appendChild(offsetDiv);
-    $("#tweets-section").elements[0].appendChild(docfrag);
-    $("#tweets-section").elements[0].appendChild(document.createElement("br"));
+    $("#tweets-section").elements[0].appendChild(docfrag).appendChild(document.createElement("br"));
 }
 
 function GetLoggedUser() {

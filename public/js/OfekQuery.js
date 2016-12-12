@@ -2,7 +2,7 @@ $ = function (query) {
     return new OfekQuery(query);
 };
 
-const OfekQuery = function (query, head) {
+const OfekQuery = function (query) {
     let collection;
     if (query === undefined) return;
     this.elements = [document];
@@ -39,7 +39,7 @@ const OfekQuery = function (query, head) {
 
     this.addClass = function (classToAdd) {
         for (let currElement of this.elements) {
-            currElement.className += " " + classToAdd;
+            currElement.classList.add(classToAdd);
         }
     };
 
@@ -74,9 +74,8 @@ const OfekQuery = function (query, head) {
                 if (!args[i](currElement)) {
                     passed = false;
                 }
+                if (passed) return true;
             }
-
-            if (passed) return true;
         }
 
         return false;
